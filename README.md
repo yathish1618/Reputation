@@ -16,7 +16,7 @@ Place Reputation folder under addons/plugins
 
 Navigate to the the admin/plugins page and activate the Reputation plugin.
 
-You need to ```enable RP``` to make it visible.
+You need to ```Enable RP``` to make it visible.
 
 ## Customisable settings
 
