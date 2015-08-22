@@ -24,3 +24,15 @@ Formula for reputation points can be tweaked for following parameters:
 
 ![settings](http://s6.postimg.org/c8dceejpd/settings.png)
 
+## Views
+
+![settings](http://s6.postimg.org/dbxgqd4ch/header.png)
+
+---
+
+![settings](http://s6.postimg.org/45f632z41/post_RP.png)
+
+---
+
+![settings](http://s6.postimg.org/bzfroh6wx/wall_Of_Fame.png)
+
