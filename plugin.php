@@ -54,13 +54,19 @@ class ETPlugin_Reputation extends ETPlugin {
 		return;
 	}
 
+	//Retrieve reputation points if enabled and exist
+	public function handler_postModel_getPostsBefore($controller, $sql)
+	{
+		if(!C("plugin.Reputation.showReputationPublic")) return;
+	    $sql->select("m.reputationPoints", "reputationPoints");
+	}
+
 	public function handler_conversationController_formatPostForTemplate($sender, &$formatted, $post, $conversation)
 	{
 		if ($post["deleteTime"]) return;
 		if(!C("plugin.Reputation.showReputationPublic")) return;
 		// Show reputation points next to username on every post
-		$memberRepo = ET::memberModel()->getById($post["memberId"]);
-		$postMemberReputation = "+ ".$memberRepo["reputationPoints"]." RP";
+		$postMemberReputation = "+ ".$post["reputationPoints"]." RP";
 		$postMemberReputation = "<a href='".URL("reputation")."' class = 'time' title='Reputation Points'>$postMemberReputation</a>";
 		$formatted["info"][] = $postMemberReputation;
 	}
