@@ -168,7 +168,7 @@ class ETPlugin_Reputation extends ETPlugin {
 	}
 	
 	// Remove reputation points to post member if un-liked
-	public function handler_conversationController_like_after($sender, $postId = false)
+	public function handler_conversationController_unlike_after($sender, $postId = false)
 	{
 		$post = ET::postModel()->getById($postId);
 		$points = "reputationPoints - ".C("plugin.Reputation.likesRP");
