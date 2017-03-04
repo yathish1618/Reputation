@@ -166,6 +166,16 @@ class ETPlugin_Reputation extends ETPlugin {
 		$this->updateReputationPoints($points, $post["memberId"]);
 		return;
 	}
+	
+	// Remove reputation points to post member if un-liked
+	public function handler_conversationController_like_after($sender, $postId = false)
+	{
+		$post = ET::postModel()->getById($postId);
+		$points = "reputationPoints - ".C("plugin.Reputation.likesRP");
+		if($points<0) $points = 0;
+		$this->updateReputationPoints($points, $post["memberId"]);
+		return;
+	}
 
 	// When we load the conversation index, conversation view count is increased. Also give reputation points.
 	public function handler_conversationController_conversationIndexDefault($sender, $conversation)
