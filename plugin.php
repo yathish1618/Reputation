@@ -163,7 +163,8 @@ class ETPlugin_Reputation extends ETPlugin {
 	{
 		$post = ET::postModel()->getById($postId);
 		$points = "reputationPoints + ".C("plugin.Reputation.likesRP");
-		$this->updateReputationPoints($points, $post["memberId"]);
+		//Do not update RP if member is liking self post 
+		if($_SESSION['userId']!=$post["memberId"])	$this->updateReputationPoints($points, $post["memberId"]);
 		return;
 	}
 	
@@ -173,7 +174,8 @@ class ETPlugin_Reputation extends ETPlugin {
 		$post = ET::postModel()->getById($postId);
 		$points = "reputationPoints - ".C("plugin.Reputation.likesRP");
 		if($points<0) $points = 0;
-		$this->updateReputationPoints($points, $post["memberId"]);
+		//Do not update RP if member is un-liking self post 
+		if($_SESSION['userId']!=$post["memberId"])	$this->updateReputationPoints($points, $post["memberId"]);
 		return;
 	}
 
